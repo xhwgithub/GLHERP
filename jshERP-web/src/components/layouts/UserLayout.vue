@@ -3,7 +3,7 @@
     <div id="userLayout" :class="['user-layout-wrapper', device]">
       <div class="container">
         <div class="poster-img">
-          <img src="/static/rightImg.png?v=320">
+          <img src="/static/musk.jpeg?v=320">
         </div>
         <div class="right-form">
           <div class="top">
@@ -40,7 +40,7 @@
         </div>
       </div>
       <p>
-        <span v-if="this.isShowRight">管伊佳科技</span>
+<!--        <span v-if="this.isShowRight">管伊佳科技</span>-->
         © 2015-2030 {{systemTitle}} - All Right Reserved 版权所有
         <a style="color:#00458a; padding-right: 10px" :href="systemUrl" target="_blank">官方网站</a>
         <span v-if="this.isShowRight"><a href="http://beian.miit.gov.cn/" target="_blank">苏ICP备2021042833号</a></span>

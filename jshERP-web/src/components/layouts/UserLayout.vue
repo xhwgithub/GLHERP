@@ -2,25 +2,22 @@
   <div class="back-layout">
     <div id="userLayout" :class="['user-layout-wrapper', device]">
       <div class="container">
-        <div class="poster-img">
-          <img src="/static/musk.jpeg?v=320">
-        </div>
-        <div class="right-form">
-          <div class="top">
-            <div class="header">
-              <a-row>
-                <a-col>
-                  <a href="/">
-                    <span class="title">{{systemTitle}}</span>
-                    <small class="desc">V3.6</small>
-                  </a>
-                </a-col>
-              </a-row>
-            </div>
+      <div class="right-form">
+        <div class="top">
+          <div class="header">
+            <a-row>
+              <a-col>
+                <a href="/">
+                  <span class="title">{{systemTitle}}</span>
+                  <small class="desc">V3.6</small>
+                </a>
+              </a-col>
+            </a-row>
           </div>
-          <route-view></route-view>
         </div>
+        <route-view></route-view>
       </div>
+    </div>
     </div>
     <div class="footer" v-if="device === 'desktop'">
       <div class="third-party-platform" v-if="isShowRight">
@@ -161,9 +158,9 @@
 <style lang="less" scoped>
   #userLayout.user-layout-wrapper {
     position: fixed;
-    left: 50%;
-    top: 12%;
-    margin-left: -543px;
+    left: 0;
+    top: 0;
+    width: 100%;
     height: 100%;
 
     &.mobile {
@@ -179,14 +176,26 @@
     }
 
     .container {
-      float: left;
       width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background: url(/static/生成特定尺寸图片.png?v=320) no-repeat center center;
+      background-size: auto;
       z-index: 99;
-      height: 70%;
-
-      .poster-img {
-        float: left;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         height: 100%;
+        background: inherit;
+        filter: blur(10px);
+        z-index: -1;
       }
 
       .right-form {
@@ -194,16 +203,13 @@
         position: relative;
         width: 340px;
         height: 460px;
-        background: rgba(255, 255, 255, 1);
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
         border-radius: 8px;
-        right: 0;
-        top: 0;
         padding: 10px 30px 0 30px;
-        margin-top: 50px;
         -webkit-box-shadow: 0 2px 6px 0 rgb(200 200 200);
         box-shadow: 0 2px 6px 0 rgb(200 200 200);
         overflow: hidden;
-
         a {
           text-decoration: none;
         }

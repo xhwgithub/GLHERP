@@ -131,7 +131,6 @@
               <div slot="content">
                 <img src="/static/weixin.jpg" style="width:258px" />
               </div>
-<!--              <a-button type="link" v-if="showWeixinSpan()">管伊佳ERP微信小程序</a-button>-->
             </a-popover>
             &copy; 2015-2030 {{systemTitle}} V3.6
           </div>

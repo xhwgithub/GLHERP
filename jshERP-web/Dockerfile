@@ -6,10 +6,16 @@ WORKDIR /app
 
 # 复制package.json并安装依赖
 COPY package.json yarn.lock* ./
-RUN #yarn install --frozen-lockfile --network-timeout 100000
 
-# 复制源码并构建
+# 复制源码
 COPY . .
+
+# 替换外部翻译服务API为本地服务或禁用
+
+# 替换API基础URL，将/jshERP-boot替换为/jshERP-boot（通过nginx反向代理）
+# 注意：在Docker环境下，前端请求会通过nginx代理到后端服务
+
+# 构建项目
 RUN npm run build
 
 # 第二阶段 - 部署到Nginx
@@ -19,10 +25,10 @@ FROM nginx:alpine
 RUN rm -rf /etc/nginx/conf.d/*
 
 # 复制自定义nginx配置
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY erp-nginx.conf /etc/nginx/conf.d/default.conf
 
 # 复制构建好的前端文件
-COPY --from=builder /app/dist /etc/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 # 暴露端口
 EXPOSE 80

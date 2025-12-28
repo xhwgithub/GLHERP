@@ -24,3 +24,6 @@ docker run -d \
 
 
 docker run -d --name redis-alpine -p 6379:6379 -v ~/redis/data:/data -v ~/redis/conf:/usr/local/etc/redis --restart unless-stopped redis:alpine redis-server --appendonly yes --requirepass 1234abcd
+
+
+nohup java -jar jshERP.jar > /dev/null 2>&1 &
